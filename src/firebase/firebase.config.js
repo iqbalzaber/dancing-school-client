@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC4chEzEPCebUuz_vGFH5Oqrpj4fFYJNnI",
-  authDomain: "groove-and-go.firebaseapp.com",
-  projectId: "groove-and-go",
-  storageBucket: "groove-and-go.appspot.com",
-  messagingSenderId: "196559962199",
-  appId: "1:196559962199:web:994289658f26bfd0912312"
+  apiKey: "AIzaSyDpL8fRNSsz6nMgIqkt5P0J0jIC4gwk_JU",
+  authDomain: "assignment-12-6d9cd.firebaseapp.com",
+  projectId: "assignment-12-6d9cd",
+  storageBucket: "assignment-12-6d9cd.appspot.com",
+  messagingSenderId: "941574301676",
+  appId: "1:941574301676:web:f8702e08ea462be87102c9"
 };
 
 // Initialize Firebase
