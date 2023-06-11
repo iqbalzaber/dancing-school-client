@@ -85,7 +85,10 @@ const Register = () => {
   const confirmPassword = watch("confirmPassword");
 
   return (
-    <div className=" pt-20 bg-slate-100 shadow-md">
+    <div className=" pt-20 bg-slate-100 shadow-md flex grid grid-cols-2 py-10 gap-x-10">
+    <div className="items-center py-36 px-36 ">
+    <iframe className="h-96 w-96" src="https://embed.lottiefiles.com/animation/107385"></iframe>
+    </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md bg-white rounded px-8 pt-6 pb-8 shadow-lg"

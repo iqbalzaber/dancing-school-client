@@ -61,8 +61,11 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded px-8 pt-6 pb-8 shadow-lg">
+    <div className="flex justify-center items-center h-screen gap-x-10">
+            <div className="py-36 pr-44">
+            <iframe className="h-96 w-96" src="https://embed.lottiefiles.com/animation/124956"></iframe>
+            </div>
+          <form className="bg-white rounded px-8 pt-6 pb-8 shadow-lg ps-24">
         <h2 className="text-2xl text-center text-gray-700 font-bold mb-8">Login Form</h2>
 
         <div className="mb-6">
