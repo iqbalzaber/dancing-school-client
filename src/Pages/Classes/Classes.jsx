@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import ClassCard from "./ClassCard";
 import Loader from "../../components/Loader/Loader";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -83,12 +83,10 @@ console.log(classes)
       </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 pt-16 gap-6">
         {classes.map((cls) => {
-          if (cls.status === "approved") {
              return (
               <ClassCard handleSelect={handleSelect} key={cls._id} cls={cls} />
             );
-          }
-          return null;
+         
         })}
       </div>
     </div>

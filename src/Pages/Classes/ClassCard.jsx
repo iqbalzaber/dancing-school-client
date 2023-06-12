@@ -1,11 +1,11 @@
-import  { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const ClassCard = ({ cls, handleSelect }) => {
   const { user } = useContext(AuthContext);
-console.log(cls)
+
   return (
     <Fade>
       <div>

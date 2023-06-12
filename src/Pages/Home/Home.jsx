@@ -5,7 +5,6 @@ import CountSection from './CountSection';
 import PopularClass from './PopularClass';
 import { Helmet } from 'react-helmet-async';
 import PopularInstructor from './PopularInstructor';
-import ExtraSection from '../ExtraSection';
 
 const Home = () => {
     return (
@@ -18,7 +17,6 @@ const Home = () => {
             <PopularInstructor />
             <About />
             <CountSection />
-            <ExtraSection/>
             <PopularClass />
         </div>
     );

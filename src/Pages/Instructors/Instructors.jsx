@@ -1,5 +1,5 @@
 import axios from "axios";
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import InstructorCard from "./InstructorCard";
 import Loader from "../../components/Loader/Loader";
 import { Helmet } from "react-helmet-async";
@@ -46,13 +46,9 @@ const Instructors = () => {
       <Helmet>
         <title>Flaire | Instructors</title>
       </Helmet>
-     <div>
-     {
-      instructors.map((instructor) => (
+      {instructors.map((instructor) => (
         <InstructorCard key={instructor._id} instructor={instructor} />
-      ))
-      }
-     </div>
+      ))}
     </div>
   );
 };

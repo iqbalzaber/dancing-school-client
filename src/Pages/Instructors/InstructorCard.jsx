@@ -1,3 +1,4 @@
+import React from "react";
 import { BsTelephoneFill } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
