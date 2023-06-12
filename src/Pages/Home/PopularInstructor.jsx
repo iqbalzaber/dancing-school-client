@@ -7,7 +7,7 @@ const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:5000/instructors";
+    const url = "https://assignment-12-server-side-ten.vercel.app/instructors";
 
     axios
       .get(url)

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const PopularClass = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    const url = "http://localhost:5000/classes";
+    const url = "https://assignment-12-server-side-ten.vercel.app/classes";
     axios
       .get(url)
       .then((res) => {

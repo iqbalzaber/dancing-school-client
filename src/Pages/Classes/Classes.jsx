@@ -14,7 +14,7 @@ const Classes = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const url = "http://localhost:5000/classes";
+    const url = "https://assignment-12-server-side-ten.vercel.app/classes";
  setLoading(true);
     axios
       .get(url)
@@ -45,7 +45,7 @@ console.log(classes)
       };
 
       axios
-        .post("http://localhost:5000/carts", orderItem)
+        .post("https://assignment-12-server-side-ten.vercel.app/carts", orderItem)
         .then((res) => {
           if (res.status === 200) {
             console.log("error handle", res.data);

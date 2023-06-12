@@ -12,7 +12,7 @@ const MyClass = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/myclass?email=${user?.email}`
+      `https://assignment-12-server-side-ten.vercel.app/myclass?email=${user?.email}`
     ).then((res) => res.json().then((data) => setData(data)));
   }, []);
 

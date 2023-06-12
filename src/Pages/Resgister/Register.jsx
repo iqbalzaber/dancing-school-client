@@ -63,7 +63,7 @@ const Register = () => {
             photo: data.photoURL,
             role: 'instructor'
           };
-          fetch(`http://localhost:5000/users/${email}`, {
+          fetch(`https://assignment-12-server-side-ten.vercel.app/users/${email}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

@@ -16,7 +16,7 @@ const ManageClassCard = ({ item }) => {
     setIsRejected(false);
 
     fetch(
-      `http://localhost:5000/instructorClasses/statusApproved/${item._id}`,
+      `https://assignment-12-server-side-ten.vercel.app/instructorClasses/statusApproved/${item._id}`,
       {
         method: "PATCH",
       }
@@ -43,7 +43,7 @@ const ManageClassCard = ({ item }) => {
     setIsApproved(false);
 
     fetch(
-      `http://localhost:5000/instructorClasses/statusRejected/${item._id}`,
+      `https://assignment-12-server-side-ten.vercel.app/instructorClasses/statusRejected/${item._id}`,
       {
         method: "PATCH",
         headers: {
@@ -87,7 +87,7 @@ const ManageClassCard = ({ item }) => {
     };
     axios
       .patch(
-        `http://localhost:5000/instructorClasses/${item._id}`,
+        `https://assignment-12-server-side-ten.vercel.app/instructorClasses/${item._id}`,
         updatedClass
       )
       .then((response) => {
