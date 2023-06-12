@@ -1,14 +1,17 @@
 [
  
-    {
-      "image": "   https://ibb.co/vzmCfZ8",
-      "danceName": "Hip Hop",
-      "instructorName": "John Smith",
-      "availableSeats": 15,
-      "price": 250,
-      "currentStudent": 35,
-      "totalSeat":50
-    },
+  {
+    "image": "   https://ibb.co/vzmCfZ8",
+    "danceName": "Hip Hop",
+    "instructorName": "John Smith",
+    "instructorImage": "https://media.istockphoto.com/id/1415171664/photo/joyful-black-woman-dancing-in-a-studio.webp?b=1&s=170667a&w=0&k=20&c=CqOK02LS37SlfSzM5E7lxD8mCDAhs146tcKTiZUz2GQ=",
+    "availableSeats": 15,
+    "price": 250,
+    "currentStudent": 35,
+    "totalSeat":50,
+    "status": "approved",
+    "reason": "so sorry, you are a doctor"
+  },
     {
       "image": " https://ibb.co/NVX1qcz",
       "danceName": "Ballet",

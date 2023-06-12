@@ -61,7 +61,6 @@ const Register = () => {
             name: data.name,
             email: data.email,
             photo: data.photoURL,
-            role: 'instructor'
           };
           fetch(`http://localhost:5000/users/${email}`, {
             method: "PUT",
