@@ -15,7 +15,7 @@ const Classes = () => {
 
   useEffect(() => {
     const url = "http://localhost:5000/classes";
-    setLoading(true);
+ setLoading(true);
     axios
       .get(url)
       .then((res) => {
@@ -26,6 +26,7 @@ const Classes = () => {
         console.error(error);
       });
   }, []);
+console.log(classes)
 
   if (loading) {
     return <Loader />;
@@ -83,7 +84,7 @@ const Classes = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 pt-16 gap-6">
         {classes.map((cls) => {
           if (cls.status === "approved") {
-            return (
+             return (
               <ClassCard handleSelect={handleSelect} key={cls._id} cls={cls} />
             );
           }
