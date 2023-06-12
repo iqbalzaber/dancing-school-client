@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
-import { FcGoogle } from 'react-icons/fc'
+import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaSpinner } from "react-icons/fa";
@@ -9,10 +9,12 @@ import { toast } from "react-hot-toast";
 import { saveUser } from "../../components/SaveUser/SaveUser";
 
 const Register = () => {
-  const { createUser, updateUserProfile,loading,signInWithGoogle } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -21,32 +23,33 @@ const Register = () => {
     watch,
   } = useForm();
 
-
   // Handle google signin
   const handleGoogleSignIn = () => {
+    setLoading(true);
     signInWithGoogle()
-      .then(result => {
-        console.log(result.user)
-        saveUser(result?.user)
+      .then((result) => {
+        console.log(result.user);
+        saveUser(result?.user);
         // saveUser(result.user)
         Swal.fire({
-          position: 'top-middle',
-          icon: 'success',
-          title: 'User Logged in Successfully',
-          
+          position: "top-middle",
+          icon: "success",
+          title: "User Logged in Successfully",
+
           showConfirmButton: false,
-          timer: 1500
-        })
-        navigate(from, { replace: true })
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
       })
-      .catch(err => {
+      .catch((err) => {
         // setLoading(false)
-        console.log(err.message)
-        toast.error(err.message)
-      })
-  }
+        console.log(err.message);
+        toast.error(err.message);
+      });
+  };
 
   const onSubmit = (data) => {
+    setLoading(true);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
@@ -54,7 +57,11 @@ const Register = () => {
 
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email };
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            photo: data.photoURL,
+          };
           fetch(`http://localhost:5000/users/${email}`, {
             method: "PUT",
             headers: {
@@ -65,15 +72,14 @@ const Register = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
-              if ( data.upsertedId) {
-              
+              if (data.upsertedId) {
                 Swal.fire({
-                  position: 'top-middle',
-                  icon: 'success',
-                  title: 'User created Successfully',
+                  position: "top-middle",
+                  icon: "success",
+                  title: "User created Successfully",
                   showConfirmButton: false,
-                  timer: 1500
-                })
+                  timer: 1500,
+                });
               }
             });
         })
@@ -85,10 +91,14 @@ const Register = () => {
   const confirmPassword = watch("confirmPassword");
 
   return (
-    <div className=" pt-20 bg-slate-100 shadow-md flex grid grid-cols-2 py-10 gap-x-10">
-    <div className="items-center py-36 px-36 ">
-    <iframe className="h-96 w-96" src="https://embed.lottiefiles.com/animation/107385"></iframe>
-    </div>
+    <div className=" pt-20 bg-slate-100 shadow-md  grid grid-cols-2 py-10 gap-x-10">
+      <div className="items-center py-36 px-36 ">
+        <iframe
+          className="h-96 w-96"
+          src="https://embed.lottiefiles.com/animation/107385"
+        ></iframe>
+                
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md bg-white rounded px-8 pt-6 pb-8 shadow-lg"
@@ -220,44 +230,42 @@ const Register = () => {
         </div>
 
         <button
-              type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
-            >
-              {loading ? (
-                <FaSpinner className='m-auto animate-spin' size={24} />
-              ) : (
-                'Continue'
-              )}
-            </button>
+          type="submit"
+          className="bg-rose-500 w-full rounded-md py-3 text-white"
+        >
+          {loading ? (
+            <FaSpinner className="m-auto animate-spin" size={24} />
+          ) : (
+            "Register"
+          )}
+        </button>
 
-        <div className='flex items-center pt-4 space-x-1'>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
+        <div className="flex items-center pt-4 space-x-1">
+          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+          <p className="px-3 text-sm dark:text-gray-400">
             Signup with social accounts
           </p>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
+          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div
           onClick={handleGoogleSignIn}
-          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
+          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
         </div>
-        <p className='px-6 text-sm text-center text-gray-400'>
-          Already have an account?{' '}
+        <p className="px-6 text-sm text-center text-gray-400">
+          Already have an account?{" "}
           <Link
-            to='/login'
-            className='hover:underline hover:text-rose-500 text-gray-600'
+            to="/login"
+            className="hover:underline hover:text-rose-500 text-gray-600"
           >
             Login
           </Link>
           .
         </p>
-
       </form>
-    
     </div>
   );
 };

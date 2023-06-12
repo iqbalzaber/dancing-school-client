@@ -25,9 +25,10 @@ const CheckoutForm = ({ cart, price }) => {
                 .then(res => {
                     console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret);
+                    localStorage.removeItem('price')
                 })
         }
-    }, [])
+    }, [price])
 
 
     const handleSubmit = async (event) => {
@@ -95,8 +96,8 @@ const CheckoutForm = ({ cart, price }) => {
             console.log('payment items',payment);
             axiosSecure.post('/payments', payment)
                 .then(res => {
-                    console.log(res.data);
-                    if (res.data.result.insertedId) {
+                    console.log('payment post',res.data);
+                    if (res.data.insertResult.insertedId) {
                       toast('Successfully posted a payment')
                     }
                 })

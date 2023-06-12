@@ -37,11 +37,13 @@ const Navbar = () => {
         className={({ isActive }) => (isActive ? "active" : "default")}
         >Classes</NavLink>
       </li>
-      <li>
-        <NavLink to="dashboard/mycart"
+     {
+      user &&  <li>
+        <NavLink to="dashboard"
         className={({ isActive }) => (isActive ? "active" : "default")}
         > Dashboard <span className="badge badge-secondary">{cart?.length|| 0}</span></NavLink>
       </li>
+     }
       {/* <li><Link to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'  }>Dashboard</Link></li> */}
      
       {/* {user ? (

@@ -4,6 +4,8 @@ import { Elements } from "@stripe/react-stripe-js";
 // import useCart from "../../hooks/useCart";
 import CheckoutForm from "./CheckOutForm";
 import useCart from "../../hooks/useCart";
+
+
 // import useCart from "../../../hooks/useCart";
 // import CheckoutForm from "./CheckOutForm";
 
@@ -12,8 +14,10 @@ console.log(stripePromise);
 
 const Payment = () => {
   const [cart] = useCart();
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-  const price = parseFloat(total.toFixed(2))
+
+  const price = localStorage.getItem('price')
+  console.log('localStroage',price);
+  // const price = parseFloat(total.toFixed(2))
 
 
   return (

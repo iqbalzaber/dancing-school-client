@@ -1,8 +1,10 @@
-import React from "react";
 import { BiShoppingBag, BiSupport } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
 import img1 from '../../../src/assets/images/asian-women-shaking-hair-while-dancing-2021-08-26-19-52-52-utc.jpg'
+import img2 from '../../assets/images/group-of-men-and-women-dancing-hip-hop-choreograph-2021-08-26-17-41-30-utc.jpg'
+import img3 from '../../assets/images/woman-and-little-girl-dancing-ballet-2021-09-24-03-18-32-utc.jpg'
+import img4 from '../../assets/images/the-group-of-modern-ballet-dancers-2021-08-26-17-40-44-utc-1-800x505.jpg'
 
 import { MdLibraryBooks } from "react-icons/md";
 import { BsPeopleFill ,BsListCheck} from "react-icons/bs";
@@ -49,20 +51,17 @@ const Banner = () => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
-            src="https://assetscdn1.paytm.com/images/catalog/product/K/KI/KIDOH-BABY-BABYOH-B185384E22E0D6B/1588582970138_8.jpg"
+            src={img2}
             className="w-full"
           />
           <div className="absolute pl-20 h-full flex items-center  left-0 top-0 bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-10 pl-10 w-1/2">
               <h3 className="text-5xl font-semibold text-white">
-                Learn Through Play
-                <span className="text-red-300"> Awesome Cars</span>
+              "Embrace the Magic of 
+                <span className="text-red-300"> Awesome Dance"</span>
               </h3>
               <p className="font-bold text-white">
-                You can buy difference types of cars here . Including: sports
-                car, truck, regular car, mini fire truck, mini police car, etc.
-                You can also get engine types of cars that you can drive . Give
-                a Simple gift to your closest one.
+              "Immerse yourself in a world of enchantment, where every graceful sway, every rhythmic beat, and every expressive gesture weaves a spell of joy, connection, and limitless possibilities."
               </p>
               <div>
                 <Link to={"/toys"}>
@@ -85,20 +84,17 @@ const Banner = () => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb-NSc98Ok4V6k1YQbo7iYN9EY_emz2aIGWg&usqp=CAU"
+            src={img3}
             className="w-full"
           />
           <div className="absolute pl-20 h-full flex items-center  left-0 top-0 bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-10 pl-10 w-1/2">
               <h3 className="text-5xl font-semibold text-white">
-                Learn Through Play
-                <span className="text-red-300"> Awesome Cars</span>
+              Discover the Transformative 
+                <span className="text-red-300"> Power of Dance</span>
               </h3>
               <p className="font-bold text-white">
-                You can buy difference types of cars here . Including: sports
-                car, truck, regular car, mini fire truck, mini police car, etc.
-                You can also get engine types of cars that you can drive . Give
-                a Simple gift to your closest one.
+              "Immerse yourself in the captivating melodies, fluid movements, and profound storytelling that dance offers, as it transcends boundaries, ignites the soul, and shapes your journey of self-discovery and growth."
               </p>
               <div>
                 <Link to={"/toys"}>
@@ -121,20 +117,17 @@ const Banner = () => {
         </div>
         <div id="slide4" className="carousel-item relative w-full">
           <img
-            src="https://m.media-amazon.com/images/I/41zuBbFQgoL._AC_.jpg"
+            src={img4}
             className="w-full"
           />
           <div className="absolute pl-20 h-full flex items-center  left-0 top-0 bottom-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-10 pl-10 w-1/2">
               <h3 className="text-5xl font-semibold text-white">
-                Learn Through Play
-                <span className="text-red-300"> Awesome Cars</span>
+              Express Your Passion 
+                <span className="text-red-300">Through Dance</span>
               </h3>
               <p className="font-bold text-white">
-                You can buy difference types of cars here . Including: sports
-                car, truck, regular car, mini fire truck, mini police car, etc.
-                You can also get engine types of cars that you can drive . Give
-                a Simple gift to your closest one.
+              "Unleash your creativity, embrace the rhythm, and discover the joy of movement"
               </p>
               <div>
                 <Link to={"/toys"}>
@@ -187,6 +180,6 @@ const Banner = () => {
 
     </div>
   );
-};
+}; 
 
 export default Banner;

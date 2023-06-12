@@ -18,6 +18,7 @@ import AddClass from '../Pages/isInstructor/AddClass'
 import MyClass from '../Pages/isInstructor/MyClass'
 import EnrolledStudents from '../Pages/isInstructor/EnrolledStudents'
 import FeedBack from '../Pages/isInstructor/FeedBack'
+import ManageClasses from '../Pages/Dashboard/ManageClasses'
 
 export const router = createBrowserRouter([
   {
@@ -82,10 +83,10 @@ export const router = createBrowserRouter([
       path:'enrolledstudents',
       element: <EnrolledStudents />
     },
-    {
-      path:'feedback',
-      element: <FeedBack />
-    },
+   {
+    path:'manageclass',
+    element: <ManageClasses />
+   }
   ]
   }
 ])

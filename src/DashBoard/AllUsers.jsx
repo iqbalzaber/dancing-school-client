@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import { FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -12,6 +12,7 @@ const AllUsers = () => {
     return res.data;
   });
 
+  // making a normal user to admin ---
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
       method: "PATCH",
@@ -31,6 +32,29 @@ const AllUsers = () => {
         }
       });
   };
+  // making a normal user to Instructor by the admin
+  const handleMakeInstructor = (user) => {
+    fetch(
+      `http://localhost:5000/users/instructor/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${user.name} is an Instructor Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   // TODO: DELETE ar kaj baj baki
 
@@ -41,7 +65,7 @@ const AllUsers = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Bistro Boss | All users</title>
+        <title> Flaire | All users</title>
       </Helmet>
       <h3 className="text-3xl font-semibold my-4">
         Total Users: {users.length}

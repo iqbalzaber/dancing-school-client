@@ -1,53 +1,48 @@
-import React, { useContext, useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-
-
-import { GrLogout } from 'react-icons/gr'
-import { FaHistory,FaHome,FaMoneyCheckAlt, FaUserAlt } from 'react-icons/fa'
-import { MdFeedback, MdLibraryBooks } from 'react-icons/md'
-import { FcAddDatabase } from 'react-icons/fc'
-import { GrSelect } from 'react-icons/gr'
-import { AiOutlineBars } from 'react-icons/ai'
-
-
-import { AuthContext } from '../../providers/AuthProvider'
-import Logo from '../Logo/Logo'
-import useAdmin from '../../hooks/useAdmin'
-import { BsFillJournalBookmarkFill, BsPeopleFill } from 'react-icons/bs'
-// TODO: Admin baki  ekhono 
-// const isAdmin = true;
-const isInstructor = false;
-
-
+import React, { useContext, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { GrLogout } from 'react-icons/gr';
+import { FaHistory, FaHome, FaMoneyCheckAlt, FaUserAlt } from 'react-icons/fa';
+import { MdLibraryBooks } from 'react-icons/md';
+import { FcAddDatabase } from 'react-icons/fc';
+import { GrSelect } from 'react-icons/gr';
+import { AiOutlineBars } from 'react-icons/ai';
+import { AuthContext } from '../../providers/AuthProvider';
+import Logo from '../Logo/Logo';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
+import { BsFillJournalBookmarkFill, BsPeopleFill } from 'react-icons/bs';
 
 const Sidebar = () => {
   const [isAdmin] = useAdmin();
-  const navigate = useNavigate()
-  const [toggle, setToggle] = useState(false)
-  const { user, logOut } = useContext(AuthContext)
+  const [isInstructor] = useInstructor();
+  const navigate = useNavigate();
+  const [toggle, setToggle] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  const [isActive, setActive] = useState(false);
 
-  const [isActive, setActive] = useState('false')
   const toggleHandler = event => {
-    setToggle(event.target.checked)
-  }
+    setToggle(event.target.checked);
+  };
+
   // Sidebar Responsive Handler
   const handleToggle = () => {
-    setActive(!isActive)
-  }
+    setActive(!isActive);
+  };
+
   const handleLogOut = () => {
-    logOut()
-    navigate('/')
-  }
+    logOut();
+    navigate('/');
+  };
+
   return (
     <>
       {/* Small Screen Navbar */}
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold bg-slate-800'>
-         <Logo/>
+            <Logo />
           </div>
         </div>
-
         <button
           onClick={handleToggle}
           className='mobile-menu-button p-4 focus:outline-none focus:bg-gray-200'
@@ -55,11 +50,12 @@ const Sidebar = () => {
           <AiOutlineBars className='h-5 w-5' />
         </button>
       </div>
+
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
-          isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-slate-200 bg-opacity-50 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+          isActive ? '-translate-x-full' : 'md:translate-x-0'
+        } transition duration-200 ease-in-out`}
       >
         <div>
           {/* Branding & Profile Info */}
@@ -77,199 +73,153 @@ const Sidebar = () => {
                 />
               </Link>
               <Link to='/dashboard'>
-                <h4 className='mx-2 mt-2 font-medium text-gray-800  hover:underline'>
+                <h4 className='mx-2 mt-2 font-medium text-gray-800 hover:underline'>
                   {user?.displayName}
                 </h4>
               </Link>
               <Link to='/dashboard'>
-                <p className='mx-2 mt-1 text-sm font-medium text-gray-600  hover:underline'>
+                <p className='mx-2 mt-1 text-sm font-medium text-gray-600 hover:underline'>
                   {user?.email}
                 </p>
               </Link>
             </div>
           </div>
 
+         
+
           {/* Nav Items */}
-        {
-          isAdmin ? (
-           <div className='flex flex-col justify-between flex-1 mt-6'>
-          <nav>
-            <>
-             
-              {/* Menu Links */}
-              <NavLink
-                to='/dashboard/mycart'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <MdLibraryBooks className='w-5 h-5' />
+          {isAdmin && (
+            <div className='flex flex-col justify-between flex-1 mt-6'>
+              <nav>
+                <>
+                  {/* Menu Links */}
+                  <NavLink
+                    to='/dashboard/manageclass'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <MdLibraryBooks className='w-5 h-5' />
+                    <span className='mx-4 font-medium'>Manage Classes</span>
+                  </NavLink>
+                  <NavLink
+                    to='/dashboard/allusers'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <FaUserAlt className='w-5 h-5' />
+                    <span className='mx-4 font-medium'>Manage Users</span>
+                  </NavLink>
+                </>
+              </nav>
+            </div>
+          )}
 
-                <span className='mx-4 font-medium'>Manage Classes</span>
-              </NavLink>
-              <NavLink
-                to='/dashboard/allusers'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaUserAlt className='w-5 h-5' />
+          {isInstructor && (
+            <div className='flex flex-col justify-between flex-1 mt-6'>
+              <nav>
+                <>
+                  {/* Menu Links */}
+                  <NavLink
+                    to='/dashboard/addclass'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <FcAddDatabase className='w-7 h-7' />
+                    <span className='mx-4 font-medium'>Add a Class</span>
+                  </NavLink>
+                  <NavLink
+                    to='/dashboard/myclass'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <BsFillJournalBookmarkFill className='w-5 h-5' />
+                    <span className='mx-4 font-medium'>My Classes</span>
+                  </NavLink>
+                </>
+              </nav>
+            </div>
+          )}
 
-                <span className='mx-4 font-medium'>Manage Users</span>
-              </NavLink>
-              
-            </>
-          </nav>
-        </div> ) :
-        isInstructor?
-         (  <div className='flex flex-col justify-between flex-1 mt-6'>
-          <nav>
-            <>
-             
-              {/* Menu Links */}
-              <NavLink
-                to='/dashboard/addclass'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FcAddDatabase className='w-7 h-7' />
-
-                <span className='mx-4 font-medium'>Add a Class</span>
-              </NavLink>
-              <NavLink
-                to='/dashboard/myclass'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <BsFillJournalBookmarkFill className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Classes</span>
-              </NavLink>
-              <NavLink
-                to='/dashboard/enrolledstudents'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <BsPeopleFill className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'> Enrolled Students</span>
-              </NavLink>
-              <NavLink
-                to='/dashboard/feedback'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <MdFeedback className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>Feedback </span>
-              </NavLink>
-            </>
-          </nav>
-        </div>) 
-        :
-         (  <div className='flex flex-col justify-between flex-1 mt-6'>
-          <nav>
-            <>
-             
-              {/* Menu Links */}
-              <NavLink
-                to='/dashboard/mycart'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <MdLibraryBooks className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My selected classes</span>
-              </NavLink>
-              <NavLink
-                to='/dashboard/enrolledclass'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <GrSelect className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Enrolled Classes</span>
-              </NavLink>
-              {/* <NavLink
-                to='/dashboard/payment'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaMoneyCheckAlt className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Payments</span>
-              </NavLink> */}
-              <NavLink
-                to='/dashboard/paymenthistory'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaHistory className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'> Payments History</span>
-              </NavLink>
-            </>
-          </nav>
-        </div>)
-        }
+          {!isAdmin && !isInstructor && (
+            <div className='flex flex-col justify-between flex-1 mt-6'>
+              <nav>
+                <>
+                  {/* Menu Links */}
+                  <NavLink
+                    to='/dashboard/mycart'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <MdLibraryBooks className='w-5 h-5' />
+                    <span className='mx-4 font-medium'>My selected classes</span>
+                  </NavLink>
+                  <NavLink
+                    to='/dashboard/enrolledclass'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <GrSelect className='w-5 h-5' />
+                    <span className='mx-4 font-medium'>My Enrolled Classes</span>
+                  </NavLink>
+                  <NavLink
+                    to='/dashboard/paymenthistory'
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                        isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
+                      }`
+                    }
+                  >
+                    <FaHistory className='w-5 h-5' />
+                    <span className='mx-4 font-medium'> Payments History</span>
+                  </NavLink>
+                </>
+              </nav>
+            </div>
+          )}
         </div>
-
-
-{/* bg side  */}
+        {/* bg side  */}
         <div>
           <hr />
           <NavLink
             to='/'
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+              `flex items-center px-4 py-2 mt-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
+                isActive ? 'bg-gray-300 text-gray-700' : 'text-gray-600'
               }`
             }
           >
             <FaHome className='w-5 h-5' />
-
             <span className='mx-4 font-medium'>Home</span>
           </NavLink>
           <button
             onClick={handleLogOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300 hover:text-gray-700 transition-colors duration-300 transform'
           >
             <GrLogout className='w-5 h-5' />
-
             <span className='mx-4 font-medium'>Logout</span>
           </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

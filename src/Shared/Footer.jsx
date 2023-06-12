@@ -1,3 +1,4 @@
+import React from "react";
 import image from '../assets/images/flaire-logo-white-text.png'
 
 const Footer = () => {
