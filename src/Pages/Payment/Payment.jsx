@@ -9,7 +9,7 @@ import useCart from "../../hooks/useCart";
 // import useCart from "../../../hooks/useCart";
 // import CheckoutForm from "./CheckOutForm";
 
-const stripePromise = loadStripe('pk_test_51NGxAaKvauBt0pV550XZCagRx7zX7xbbRvMY8SeiRkuc9J4pFPVy8fSzjGbMUlW7wj4kHF6ks93MqS8ZRXMNslC700olrSnBPd');
+const stripePromise = loadStripe('pk_test_51NG3SmLgyMzNaT8nubRFvZqR2XJ6NCl38mbjZGloJhZbobg8y146N1WcSEORegXBEadbZwE8X2LFFJ0DM2PwPAy900bg8iBuGb');
 console.log(stripePromise);
 
 const Payment = () => {

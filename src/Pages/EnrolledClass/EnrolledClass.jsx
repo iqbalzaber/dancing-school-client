@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const EnrolledClass = () => {
@@ -7,7 +7,7 @@ const EnrolledClass = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     fetch(
-      `http://localhost:5000/payments?email=${user?.email}`
+      `https://server-eight-hazel.vercel.app/payments?email=${user?.email}`
     ).then((res) =>
       res.json().then((data) => {
         setData(data);

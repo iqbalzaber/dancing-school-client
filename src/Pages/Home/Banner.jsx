@@ -28,7 +28,7 @@ const Banner = () => {
               Nobody cares if you can’t dance well. Just get up and dance. Great dancers are great because of their passion.Dancing is surely the most basic of relevant of all forms of expression. Nothing else can so effectively give outward form to an inner experience. One who expresses one’s self through dance is a dancer. One who expresses one’s self through a dancer is a dance teacher.
               </p>
               <div>
-                <Link to={"/toys"}>
+                <Link to={"/register"}>
                   {" "}
                   <button className="btn bg-red-500 text-white font-mono mr-4 ">
                     Register Now 
@@ -64,7 +64,7 @@ const Banner = () => {
               "Immerse yourself in a world of enchantment, where every graceful sway, every rhythmic beat, and every expressive gesture weaves a spell of joy, connection, and limitless possibilities."
               </p>
               <div>
-                <Link to={"/toys"}>
+                <Link to={"/register"}>
                   {" "}
                   <button className="btn btn-outline mr-4 btn-secondary font-mono">
                     Shop Now 
@@ -97,7 +97,7 @@ const Banner = () => {
               "Immerse yourself in the captivating melodies, fluid movements, and profound storytelling that dance offers, as it transcends boundaries, ignites the soul, and shapes your journey of self-discovery and growth."
               </p>
               <div>
-                <Link to={"/toys"}>
+                <Link to={"/register"}>
                   {" "}
                   <button className="btn btn-outline mr-4 btn-secondary font-mono">
                     Shop Now 
@@ -130,7 +130,7 @@ const Banner = () => {
               "Unleash your creativity, embrace the rhythm, and discover the joy of movement"
               </p>
               <div>
-                <Link to={"/toys"}>
+                <Link to={"/register"}>
                   {" "}
                   <button className="btn btn-outline mr-4 btn-secondary font-mono">
                     Shop Now 
